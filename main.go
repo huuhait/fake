@@ -1,1 +1,5 @@
 package fake
+
+func main() {
+
+}
